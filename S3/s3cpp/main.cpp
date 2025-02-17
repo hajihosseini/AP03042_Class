@@ -1,4 +1,6 @@
 #include<iostream>
+#include<string.h>
+#include<stdlib.h>
 
 class Student
 {
@@ -11,6 +13,10 @@ public:
     double m_Grades[40];
     char* m_CourseNames[40];
 
+    Student(int stdnum, const char* fname, const char* lname)
+    {}// TODO1
+    ~Student()
+    {} //TODO2
     double GetGPA()
     {
         double sumGrade = 0;
@@ -31,19 +37,42 @@ public:
         }
     }
 
-    void register_course(int credits, char* name, double grade)
+    void register_course(int credits, const char* name, double grade)
     {
         m_Credits[m_CoursesPassed] = credits;
         m_Grades[m_CoursesPassed] = grade;
-        m_CourseNames[m_CoursesPassed] = name;
+        char* namecopy = new char[strlen(name) + 1];
+            //(char*) malloc(strlen(name) + 1);
+        strcpy(namecopy, name);
+        m_CourseNames[m_CoursesPassed] = namecopy;
         m_CoursesPassed++;
     }
+    Student(){}
 };
 
 int main()
 {
-    Student s;
+    Student s(3423, "asdf", "lasdkfj");
+    Student* s2 = new Student(3423, "asdf", "lasdkfj");
+    Student* s3 = &s;
+    int * pn = new int[10];
     s.m_CoursesPassed = 0;
+    char bufc[20];
+    double grade;
+    int credits;
+    while(true)
+    {
+        std::cout << "course name?" ;
+        std::cin >> bufc ;
+        if (*bufc == 'A')
+            break;
+        std::cout << "course credits?" ;
+        std::cin >> credits ;
+        std::cout << "course grade?" ;
+        std::cin >> grade ;
+        s.register_course(credits, bufc, grade);
+    }
+    s.list_courses();
     std::cout << s.GetGPA() << std::endl;
     return 0;
 }
