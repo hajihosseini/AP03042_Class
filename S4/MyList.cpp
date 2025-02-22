@@ -46,8 +46,5 @@ int main()
 {
     int nums[5] = {1,2,3,4,5};
     MyList m(5, nums);
-    m.printList();
     m.append(14);
-    m.printList();
-
 }
