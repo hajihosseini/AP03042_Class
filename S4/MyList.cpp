@@ -7,6 +7,7 @@ class MyList
 {
     public:
         int m_size;
+        int m_capacity; // TODO1: new_size = size*2
         int* m_Pnums;
 
     MyList(int size, int *nums)
@@ -26,9 +27,17 @@ class MyList
         m_Pnums[m_size-1] = x;
     }
 
+    void erase(int pos)
+    {
+        
+    }
+
     private:
     void resize(int newsize)
     {
+        if (newsize <= m_size)
+            return;
+
         int* newMem = (int*)malloc(sizeof(int)*newsize);
         int i=0;
         for(i=0; i<m_size;i++)
