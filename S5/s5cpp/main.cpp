@@ -31,6 +31,10 @@ int main6()
     // nums.erase(3) // TODO6
     cout << nums.capacity() << endl; //TODO7
     nums.clear(); // TODO8
+    int num = 10;
+    num << 1;
+    num >> 1;
+    
 
     return 0;
 

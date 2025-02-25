@@ -25,6 +25,7 @@ int main()
     Student s;
     Student* ps = &s;
     int x;
+    //s << 1;
     s.m_name[0] = 'A';
     s.m_name[1] = 0;
     s.m_stdno = 403521;
