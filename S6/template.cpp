@@ -3,19 +3,21 @@
 
 using namespace std;
 
+template<typename T>
+
 class MyList
 {
     public:
         int m_size;
         int m_capacity;
-        int* m_pNums;
+        T* m_pNums;
 
         MyList():m_size(0),m_capacity(0),m_pNums(nullptr){};
 
-        MyList(int size, int capacity , const int* nums)
+        MyList(int size, int capacity , const T* nums)
         :m_size(size), m_capacity(capacity)
         {
-            m_pNums = (int *)malloc(sizeof(int)*capacity);
+            m_pNums = (T *)malloc(sizeof(T)*capacity);
             for (int i=0; i<m_size;i++)
             {
                 m_pNums[i] = nums[i];
@@ -35,7 +37,7 @@ class MyList
 
         int len(){return m_size;}
 
-        void append(int value)
+        void append(T value)
         {
             if (m_size == m_capacity)
             {
@@ -49,7 +51,7 @@ class MyList
             m_size ++;
         }
 
-        void insert(int index, int value)
+        void insert(int index, T value)
         {
             if (m_size==m_capacity)
             {
@@ -84,13 +86,13 @@ class MyList
         {
             for(int i=0;i<int(m_size/2);i++)
             {
-                int temp = m_pNums[i];
+                T temp = m_pNums[i];
                 m_pNums[i] = m_pNums[m_size-1-i];
                 m_pNums[m_size-i-1] = temp;
             }
         }
 
-        int at(int index)
+        T at(int index)
         {
             if((index < m_size) && (index>-1))
                 return m_pNums[index];
@@ -101,7 +103,7 @@ class MyList
     private:
         void resize(int newsize)
         {
-            int* newNums = (int*)malloc(sizeof(int)*(newsize));
+            T* newNums = (T*)malloc(sizeof(T)*(newsize));
             for(int i=0; i<m_size;i++)
             {
                 newNums[i] = m_pNums[i];
@@ -115,9 +117,9 @@ class MyList
 
 int main()
 {
-    MyList l1;
+    MyList<int> l1;
 
-    int nums[5] = {1,2,3,4,5};
+    double nums[5] = {1.2,2.5,3.6,4.1,5.9};
     MyList l2(5, 10, nums);
 
     l2.print_list();
@@ -135,8 +137,6 @@ int main()
     l2.print_list();
 
     cout << l2.at(3)<< endl;
-
-    //l2.sort(); //ToDo
 
 
     return 0;
