@@ -19,6 +19,13 @@ class Program
         return a;
     }
 
+    static Student max(Student a, Student b)
+    {
+        if (b > a)
+            return b;
+        return a;
+    }    
+
     static T sum<T>(T a, T b) where T: INumber<T>
     {
         return (a+b);
@@ -33,12 +40,34 @@ class Program
         return sum;
     }
 
+    static T sum<T>(IEnumerable<T> items)
+        where T: INumber<T>
+    {
+        T sum = T.Zero;
+        foreach(T i in items)
+            sum = sum + i;
+        return sum;
+    }
+
+
     static void PrintItems<T>(IEnumerable<T> items)
     {
         foreach(T i in items)
             System.Console.WriteLine(i);
     }
-    
+
+    static void PrintItemsMe<T>(IEnumerable<T> items)
+    {
+
+        IEnumerator<T> eor = items.GetEnumerator();
+        //var eor1 = items.GetEnumerator();
+        while (eor.MoveNext())
+        {
+            System.Console.WriteLine(eor.Current);
+        }
+
+    }
+
     static void Main(string[] args)
     {
         int[] nums = new int[]{3, 4, 5, 6};
@@ -65,13 +94,13 @@ class Program
         
 
         System.Console.WriteLine("queue");
-        PrintItems(qnums);
+        PrintItemsMe(qnums);
         System.Console.WriteLine("stack");
-        PrintItems(numstack);
+        PrintItemsMe(numstack);
         System.Console.WriteLine("array");
-        PrintItems(nums);
+        PrintItemsMe(nums);
         System.Console.WriteLine("list");
-        PrintItems(numsl);
+        PrintItemsMe(numsl);
     }
     static void Main2(string[] args)
     {
