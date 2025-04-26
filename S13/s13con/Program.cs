@@ -51,6 +51,8 @@ class Program
         System.Console.WriteLine("----------------");
         PrintPersons(students);
 
+        IEnumerable<int> ax = new List<int>();
+
         // Teacher t = new Teacher() {
         //     FirstName = "Zari",
         //     LastName="Mohasebi"
