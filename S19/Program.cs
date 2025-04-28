@@ -11,7 +11,7 @@ class Program
     public delegate int BinaryOp(int a, int b);
     public delegate void LogFn(string msg);
 
-    private static LogFn Log ; 
+    private static event LogFn Log;
 
 
     static int[] Apply(int[] nums1, int[] nums2, BinaryOp op)
@@ -35,16 +35,17 @@ class Program
 
     }
 
-    static void Main(string[] args)
+    static void Main8(string[] args)
     {
         Log += Console.WriteLine;
         Log += LogToFile;
+        Log = null;
 
         int[] nums1 = new int[4] {1, 2, 3, 5};
         int[] nums2 = new int[4] {3, 7, 4, 2};
         int[] result = Apply(nums1, nums2, add);
         foreach(var re in result)
-            Log?.Invoke(re.ToString());
+            Log.Invoke(re.ToString());
 
         Log -= Console.WriteLine;
         Log += msg => Console.WriteLine($"SMS:+989103843818 {msg}");
