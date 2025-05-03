@@ -42,4 +42,41 @@ public class ComplexNumber
             
         }
     }
+
+
+    public double this[bool index]
+    {
+        get
+        {
+            if(index==true)
+                return this.Re;
+            else
+                return this.Im;
+        }
+
+        set
+        {
+            if (index==true)
+                this.Re = value;
+            else
+                this.Im = value;
+            
+        }
+    }
+
+    // public static explicit operator double(ComplexNumber a)
+    // {
+    //     return a.Re;
+    // }
+
+    public static implicit operator double(ComplexNumber a)
+    {
+        return a.Re;
+    }
+
+    public static implicit operator ComplexNumber(double a)
+    {
+        return new ComplexNumber(a,a);
+    }
+
 }
