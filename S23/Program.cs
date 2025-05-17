@@ -12,6 +12,7 @@ class Program
         for(int i=0; i<1_000; i++)
             new Thread(() => {
                 //....
+                CPUIntensive(i + 10);
                 Interlocked.Decrement(ref counter);
                 if (counter == 0)
                     ase.Set();
@@ -23,14 +24,23 @@ class Program
         System.Console.WriteLine(s.Elapsed.ToString());
     }
 
-    static void Main3(string[] args)
+    static double CPUIntensive(int n)
+    {
+        double d = n;
+        for (int i = 0; i < 100_000; i++)
+            d = d * Math.Sqrt(n) % n;
+        return d;
+    }
+    static void Main55(string[] args)
     {
         AutoResetEvent ase = new AutoResetEvent(false);
-        int counter = 1_000_000;
+        int counter = 1_000;
         var s = Stopwatch.StartNew();
-        for(int i=0; i<1_000_000; i++)
-            ThreadPool.QueueUserWorkItem(obj => {
+        for (int i = 0; i < 1_000; i++)
+            ThreadPool.QueueUserWorkItem(obj =>
+            {
                 //....
+                CPUIntensive(i + 10);
                 Interlocked.Decrement(ref counter);
                 if (counter == 0)
                     ase.Set();
@@ -48,7 +58,7 @@ class Program
 
     const int COUNT = 10_000_000;
     static int counter = 0;
-    static void Main2(string[] args)
+    static void Main88(string[] args)
     {
         object mylock = new object();
 
