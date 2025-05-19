@@ -3,19 +3,30 @@ using System.Text.RegularExpressions;
 
 namespace S25;
 
-class Program
+class Program343243
 {
     static double dowork(object obj)
     {
-        int n = (int)obj;
+        double n = (double)obj;
         System.Console.WriteLine($"{Thread.CurrentThread.ManagedThreadId} => {n}");
         double d = 1;
         for (int i = 1; i < n; i++)
-            d = (d * i) % int.MaxValue;
+            d = (d * i) % (Math.Pow(10,3)+7);
         return d;
     }
 
-    static void Main(string[] args)
+    static async Task Main(string[] args)
+    {
+        double lastValue = 1000;
+        for (int i = 0; i < 20; i++)
+        {
+            lastValue = await Task<double>.Factory
+                        .StartNew(dowork, lastValue);            
+        }
+    }
+
+
+    static void Main4(string[] args)
     {
         double sum = 0;
         List<Task> tasks = new List<Task>();
