@@ -17,16 +17,22 @@ class Program
 
     static void Main(string[] args)
     {
-        var tasks = new Task<double>[19];
         double sum = 0;
+        List<Task> tasks = new List<Task>();
         for (int i = 1; i < 20; i++)
         {
-            tasks[i - 1] = Task<double>.Factory.StartNew(dowork, i * 10_000_000);
+            tasks.Add(Task<double>.Factory
+                .StartNew(dowork, i * 1000)
+                .ContinueWith(t => //Interlocked.Add(ref )
+                {
+                    lock (tasks)
+                    {
+                        sum += t.Result;
+                    }
+                }
+                ));
         }
-        Task.WaitAll(tasks);
-
-        foreach (var t in tasks)
-            sum += t.Result;
+        Task.WaitAll(tasks.ToArray());
         System.Console.WriteLine(sum);
     }
 
