@@ -88,21 +88,21 @@ public class InheritanceTest
     [TestMethod]
     public void Q13_JuniorTest()
     {
-        Assert.Inconclusive();
-        // // It should not have an empty constructor
-        // Assert.IsTrue(typeof(JuniorDeveloper).GetConstructor(Type.EmptyTypes) == null);
-        // // It should inherit from Programmer
-        // Assert.IsTrue(typeof(Developer).IsAssignableFrom(typeof(JuniorDeveloper)));
+        //Assert.Inconclusive();
+        // It should not have an empty constructor
+        Assert.IsTrue(typeof(JuniorDeveloper).GetConstructor(Type.EmptyTypes) == null);
+        // It should inherit from Programmer
+        Assert.IsTrue(typeof(Developer).IsAssignableFrom(typeof(JuniorDeveloper)));
 
-        // Developer p = new JuniorDeveloper("امین قسوری", false);
-        // Assert.AreEqual(p.Name, "آقای امین قسوری");
-        // Assert.AreEqual(p.IsFemale, false);
-        // Assert.AreEqual(p.Salary, 2_800_000);
+        Developer p = new JuniorDeveloper("امین قسوری", false);
+        Assert.AreEqual(p.Name, "آقای امین قسوری");
+        Assert.AreEqual(p.IsFemale, false);
+        Assert.AreEqual(p.Salary, 2_800_000);
 
-        // // Student should not override/modify the Name get property.
-        // Assert.AreNotEqual(
-        //     typeof(JuniorDeveloper).GetMethod("get_Name").DeclaringType,
-        //     typeof(JuniorDeveloper));
+        // Student should not override/modify the Name get property.
+        Assert.AreNotEqual(
+            typeof(JuniorDeveloper).GetMethod("get_Name").DeclaringType,
+            typeof(JuniorDeveloper));
     }
 
     /// <summary>
@@ -120,18 +120,18 @@ public class InheritanceTest
     [TestMethod]
     public void Q14_FullStackTest()
     {
-        Assert.Inconclusive();
-        // // It should not have an empty constructor
-        // Assert.IsTrue(typeof(FullStackDeveloper).GetConstructor(Type.EmptyTypes) == null);
-        // // It should inherit from Programmer
-        // Assert.IsTrue(typeof(SeniorDeveloper).IsAssignableFrom(typeof(FullStackDeveloper)));
+        //Assert.Inconclusive();
+        // It should not have an empty constructor
+        Assert.IsTrue(typeof(FullStackDeveloper).GetConstructor(Type.EmptyTypes) == null);
+        // It should inherit from Programmer
+        Assert.IsTrue(typeof(SeniorDeveloper).IsAssignableFrom(typeof(FullStackDeveloper)));
 
-        // Developer p = new FullStackDeveloper("پارمیس علایی", true);
-        // Assert.AreEqual(p.Name, "دکتر پارمیس علایی");
-        // Assert.AreEqual(p.IsFemale, true);
-        // Assert.AreEqual(p.Salary, 7_500_000);
+        Developer p = new FullStackDeveloper("پارمیس علایی", true);
+        Assert.AreEqual(p.Name, "دکتر پارمیس علایی");
+        Assert.AreEqual(p.IsFemale, true);
+        Assert.AreEqual(p.Salary, 7_500_000);
 
-        // Assert.AreEqual((p as FullStackDeveloper).CalculateSalary(10), 8_200_000);
-        // Assert.AreEqual((p as SeniorDeveloper).CalculateSalary(10), 8_200_000);
+        Assert.AreEqual((p as FullStackDeveloper).CalculateSalary(10), 8_200_000);
+        Assert.AreEqual((p as SeniorDeveloper).CalculateSalary(10), 8_200_000);
     }
 }

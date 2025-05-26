@@ -44,7 +44,7 @@ public abstract class Developer
         this.IsFemale = IsF;
     }
 
-    public string Name
+    public virtual string Name
     {
         get
         {
@@ -65,8 +65,43 @@ public class SeniorDeveloper : Developer
 
     public override int Salary => 4_500_000;
 
-    public int CalculateSalary(int hours)
+    public virtual int CalculateSalary(int hours)
     {
         return Salary + (hours * 50_000);
     }
+}
+
+
+public class JuniorDeveloper : Developer
+{
+    public JuniorDeveloper(string n, bool i) : base(n, i) { }
+
+    public override int Salary => 2_800_000;
+
+}
+
+
+public class FullStackDeveloper : SeniorDeveloper
+{
+    public FullStackDeveloper(string n, bool i) : base(n, i) { }
+
+    public override int Salary => 7_500_000;
+
+    public override int CalculateSalary(int hours)
+    {
+        return Salary + (hours * 70_000);
+    }
+
+    public override string Name
+    {
+        get
+        {
+            return ("دکتر ") + this.name;
+        }
+        set
+        {
+            this.name = value;
+        }
+    }
+
 }
