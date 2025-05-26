@@ -105,3 +105,37 @@ public class FullStackDeveloper : SeniorDeveloper
     }
 
 }
+
+
+public class InflationStat
+{
+    public string Country;
+    public Dictionary<int, double> Values;
+    public static string[] Indicators;
+
+    public static InflationStat Parse(string line, string indicatorsLine) => new InflationStat(line, indicatorsLine);
+
+    public InflationStat(string line, string indicatorsLine)
+    {
+        Indicators ??= indicatorsLine.Split(',')
+                                      .Select(e => e.Trim('"', ' '))
+                                      .ToArray();
+        var values = line.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                         .Select(e => e.Trim('"', ' '))
+                         .Select(x => x == string.Empty ? "0.0" : x)
+                         .ToArray();
+
+        this.Country = values[0];
+
+        Values = values
+            .Skip(4)
+            .Zip(Indicators.Skip(4))
+            .ToDictionary(
+                x => int.Parse(x.Second),
+                x => Math.Round(double.Parse(x.First), 2)
+            );
+    }
+
+    public double this[int year] => Values[year]; 
+
+}

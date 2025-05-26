@@ -16,20 +16,20 @@ public class InflationStatTests
     [TestMethod]
     public void Q1_DataParsingTest()
     {
-        Assert.Inconclusive();
-        // var stat = InflationStat.Parse(iran_line, first_line);
-        // Assert.AreEqual(stat.Country, "Iran Islamic Rep.");
-        // Assert.AreEqual(stat[1960], 9.82);
-        // Assert.AreEqual(stat[2020], 30.59);
-        // Assert.AreEqual(stat[2021], 43.39);
-        // Assert.AreEqual(stat[2022], 0);
+        //Assert.Inconclusive();
+        var stat = InflationStat.Parse(iran_line, first_line);
+        Assert.AreEqual(stat.Country, "Iran Islamic Rep.");
+        Assert.AreEqual(stat[1960], 9.82);
+        Assert.AreEqual(stat[2020], 30.59);
+        Assert.AreEqual(stat[2021], 43.39);
+        Assert.AreEqual(stat[2022], 0);
 
-        // stat = InflationStat.Parse(usa_line, first_line);
-        // Assert.AreEqual(stat.Country, "United States");
-        // Assert.AreEqual(stat[1960], 1.46);
-        // Assert.AreEqual(stat[2020], 1.23);
-        // Assert.AreEqual(stat[2021], 4.70);
-        // Assert.AreEqual(stat[2022], 8.00);        
+        stat = InflationStat.Parse(usa_line, first_line);
+        Assert.AreEqual(stat.Country, "United States");
+        Assert.AreEqual(stat[1960], 1.46);
+        Assert.AreEqual(stat[2020], 1.23);
+        Assert.AreEqual(stat[2021], 4.70);
+        Assert.AreEqual(stat[2022], 8.00);        
     }
 
 
