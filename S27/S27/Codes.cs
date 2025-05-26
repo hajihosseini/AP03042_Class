@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Reflection.Metadata;
 
 public static class Basic
 {
@@ -29,5 +30,43 @@ public class ComplexNumber<T> where T : INumber<T>
     public static ComplexNumber<T> operator +(ComplexNumber<T> a, ComplexNumber<T> b)
     {
         return new ComplexNumber<T>(a.Real + b.Real, a.Img + b.Img);
+    }
+}
+
+public abstract class Developer
+{
+    public string name;
+    public bool IsFemale;
+
+    public Developer(string n, bool IsF)
+    {
+        this.name = n;
+        this.IsFemale = IsF;
+    }
+
+    public string Name
+    {
+        get
+        {
+            return (IsFemale ? "خانم " : "آقای ") + this.name;
+        }
+        set
+        {
+            this.name = value;
+        }
+    }
+
+    public abstract int Salary { get; }
+}
+
+public class SeniorDeveloper : Developer
+{
+    public SeniorDeveloper(string n, bool i) : base(n, i) { }
+
+    public override int Salary => 4_500_000;
+
+    public int CalculateSalary(int hours)
+    {
+        return Salary + (hours * 50_000);
     }
 }
