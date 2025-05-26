@@ -1,4 +1,4 @@
-﻿namespace Solve.Tests;
+﻿namespace S27.Tests;
 
 [TestClass]
 public class InheritanceTest

@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Security.Cryptography;
 
-namespace Solve.Tests;
+namespace S27.Tests;
 
 [TestClass]
 public class MThreadingTests

@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Security.Cryptography;
 
-namespace Solve.Test;
+namespace S27.Test;
 
 [TestClass]
 public class BasicTests
@@ -15,17 +15,17 @@ public class BasicTests
     
     public void Q17_SwapTest()
     {
-        Assert.Inconclusive();
-        // int a = 5;
-        // int b = 6;
-        // Basic.Swap(ref a, ref b);
-        // Assert.AreEqual(a, 6);
-        // Assert.AreEqual(b, 5);
+        //Assert.Inconclusive();
+        int a = 5;
+        int b = 6;
+        Basic.Swap(ref a, ref b);
+        Assert.AreEqual(a, 6);
+        Assert.AreEqual(b, 5);
 
-        // double da = 5.1;
-        // double db = 6.2;
-        // Basic.Swap(ref da, ref db);
-        // Assert.AreEqual(da, 6.2);
-        // Assert.AreEqual(db, 5.1);
+        double da = 5.1;
+        double db = 6.2;
+        Basic.Swap(ref da, ref db);
+        Assert.AreEqual(da, 6.2);
+        Assert.AreEqual(db, 5.1);
     }
 }
