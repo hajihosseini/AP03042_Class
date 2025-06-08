@@ -46,7 +46,7 @@ public class UserService
 // Step 4: Usage examples
 class Program343
 {
-    static void Main45678()
+    static void Main234()
     {
         Console.WriteLine("Simple Dependency Injection Example");
         Console.WriteLine("===================================");

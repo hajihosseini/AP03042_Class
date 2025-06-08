@@ -71,7 +71,7 @@ namespace ConsoleDIDemo
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main4567(string[] args)
         {
             // 3. Create a ServiceCollection (the DI container in-memory registry)
             var services = new ServiceCollection();

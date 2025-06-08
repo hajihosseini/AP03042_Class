@@ -15,7 +15,7 @@ class Program343243
         return d;
     }
 
-    static async Task Main(string[] args)
+    static async Task Maindsd(string[] args)
     {
         double lastValue = 1000;
         for (int i = 0; i < 20; i++)

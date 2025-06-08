@@ -4,7 +4,7 @@ namespace S25;
 
 class Program33
 {
-    static async Task Main33(string[] args)
+    static async Task Main(string[] args)
     {
         using var client = new HttpClient();
         string result = await client.GetStringAsync("https://www.tabnak.ir/");
@@ -12,7 +12,7 @@ class Program33
         foreach (Match match in Regex.Matches(result, pattern, RegexOptions.IgnoreCase))
         {
             try
-            {
+            
                 string url = match.Groups["url"].Value;
                 var bytes = client.GetByteArrayAsync(url).Result;
                 string filename = Path.GetFileName(url);

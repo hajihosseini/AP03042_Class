@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main3(string[] args)
     {
         // The Host provides a standardized way to set up DI, logging, and configuration.
         var host = Host.CreateDefaultBuilder(args)

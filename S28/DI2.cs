@@ -202,7 +202,7 @@ public class OrderService
 // Step 4: Manual dependency injection (without DI container)
 class Program44412
 {
-    static void Main88888()
+    static void Main234()
     {
         Console.WriteLine("Dependency Injection Example - E-commerce Order Processing");
         Console.WriteLine("===========================================================");

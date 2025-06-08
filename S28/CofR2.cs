@@ -98,7 +98,7 @@ public class CEOHandler : ExpenseHandler
 // Usage example
 class Program
 {
-    static void Main()
+    static void Ma45678in()
     {
         // Create handlers
         var teamLead = new TeamLeadHandler();

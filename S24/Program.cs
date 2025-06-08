@@ -14,18 +14,22 @@ class Program
     }
 
 
-    static async Task<double> CPUIntensiveAsync()
-    {        
-        int n = 15;
-        double d = n;
-        for (int i = 0; i < 100_000_000; i++)
-            d = d * Math.Sqrt(n) % n;
-        return d;
+    static async Task<double> CPUIntensiveAsync(int n)
+    {
+        // int n = 15;
+        double result = await Task.Run(() =>
+        {
+            double d = n;
+            for (int i = 0; i < 100_000_000; i++)
+                d = d * Math.Sqrt(n) % n;
+            return d;
+        });
+        return result;
     }
 
     static void Main(string[] args)
     {
-        CPUIntensiveAsync().Start();
+        CPUIntensiveAsync(15).Start();
         
         Stopwatch sw = Stopwatch.StartNew();
         double sum = 0;
